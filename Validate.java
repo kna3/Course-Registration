@@ -43,5 +43,40 @@ enum Level {
 		int time = 0;
 		Comparator<Student> compareBylevel = (Student o1, Student o2) -> o1.getLevel().compareTo( o2.getLevel());
 		Collections.sort(studentList, compareBylevel.reversed());
+		Iterator<Courses> it = courseList.iterator();
+		Iterator<Student> itr = studentList.iterator();
+		
+		while(itr.hasNext()) {
+			if((itr.next().level)== (Level.THIRD_YEAR).toString()) {
+				pref = itr.next().getPreferences();
+				int id = itr.next().studentId;
+				for(int i = 0; i < 3 ; i++) {
+					char currentPref[] = pref.get(i).toCharArray();
+					if(pref.get(i).matches("[A-I]")) {
+					for(int j = 0; j < courseList.size();) {
+						if((courseList.get(j).getCourseName()) == (currentPref[i])) {
+							currentCap = courseList.get(j).getCapacity();
+							time = courseList.get(j).getClassTimings();
+							if(currentCap>0) {
+								
+								courseList.get(j).setCapacity(currentCap-1);
+								AllocateCourse(pref,id);
+							}
+						}
+						else j++;
+					}
+						
+					}
+				}
+			  }	
+		}
 	}
+	
+	public void AllocateCourse(List<String> pref, int id) {
+			}
+		}
+	
+
+	}
+
 }	
