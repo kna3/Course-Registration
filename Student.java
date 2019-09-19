@@ -7,7 +7,11 @@ public class Student {
 	List<String> preferences = new ArrayList<String>();
 	String level=""; 
 	int satisfactionRating;
+<<<<<<< HEAD
 	List<Courses> allocatedList = new ArrayList<Courses>();	
+=======
+	List<Courses> allocated = new ArrayList<Courses>();	
+>>>>>>> 2b366995fb369d41398700276239e2a9732dd0b4
 	
 	public List<Courses> getAllocatedList() {
 		return allocatedList;
