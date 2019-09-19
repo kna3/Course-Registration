@@ -8,10 +8,11 @@ import java.util.List;
 public class FileProcessor {
 	    BufferedReader input = null;
 	    FileReader fr;
-	    List<String> list = new ArrayList<String>();
+
 	    
 	    public List<String> readLine(String inputFile) {
 	    	 try {
+			   List<String> list = new ArrayList<String>();
 		            fr = new FileReader(inputFile);
 		            input = new BufferedReader(fr);
 
