@@ -1,7 +1,4 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Student {
@@ -10,7 +7,15 @@ public class Student {
 	List<String> preferences = new ArrayList<String>();
 	String level=""; 
 	int satisfactionRating;
+	List<Courses> allocated = new ArrayList<Courses>();	
 	
+	public List<Courses> getAllocatedList() {
+		return allocatedList;
+	}
+
+	public void setAllocatedList(List<Courses> allocatedList) {
+		this.allocatedList = allocatedList;
+	}
 
 	public int getStudentId() {
 		return studentId;
