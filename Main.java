@@ -1,46 +1,38 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
+import java.io.IOException;
 import java.util.List;
 
 public class Main {
 
-	public static void main(String[] args) {
-	
-		String CourseInformationFile = args[0];
-		String studentCoursePrefFile = args[1];
-		
-		FileParser courseObj = new FileParser();
-		courseObj.ParseCourseFile(CourseInformationFile);
-		courseObj.ParseStudentFile(studentCoursePrefFile);
-		
-		List<Courses> list = new ArrayList<Courses>();
-		List<Student> stList = new ArrayList<Student>();
-		list = courseObj.obj.getCourseList();
-		stList= courseObj.obj.getStudentList();
-		
-		
-		
-		Iterator<Courses> it=list.iterator();
-		System.out.println("course");
-		while (it.hasNext()) {
-			Courses courses=it.next();
-			System.out.println(courses.getCapacity());
-			System.out.println(courses.getClassTimings());
-			System.out.println(courses.getCourseName());
+	public static void main(String[] args) throws IOException {
+
+		if (args.length != 0) {
+			String CourseInformationFile = args[0];
+			String studentCoursePrefFile = args[1];
+
+			FileProcessor fileobj = new FileProcessor();
+
+			List<String> cList = fileobj.readLine(CourseInformationFile);
+			List<String> sList = fileobj.readLine(studentCoursePrefFile);
 			
-		}
-		System.out.println("student");
-		Iterator<Student> itr = stList.iterator();
-	    
-		while (itr.hasNext()) {
-			Student student=itr.next();
-			System.out.println(student.getStudentId());
-			System.out.println(student.getPreferences());
-			System.out.println(student.getLevel());
-		}
+			FileParser courseObj = new FileParser();
+			List<Courses> courseList = courseObj.ParseCourseFile(cList);
+			List<Student> studentList= courseObj.ParseStudentFile(sList);
 			
-	
+			Validate obj = new Validate();
+			obj.test(studentList, courseList);
+		
+			FileDisplayInterface fileDisplay = new Results();
+			fileDisplay.DisplayFile(studentList, "registration_results.txt");
+			
+			StdoutDisplayInterface outDisplay = new Results();
+			outDisplay.DisplayResult(studentList);
 		}
-	
+		else {
+			 System.err.println("Invalid number of arguments");
+	         System.err.println("Program exited");
+	         System.exit(1);
+		}
+		
 	}
+}
+
