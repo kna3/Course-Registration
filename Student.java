@@ -7,7 +7,7 @@ public class Student {
 	List<String> preferences = new ArrayList<String>();
 	String level=""; 
 	int satisfactionRating;
-	List<Courses> allocated = new ArrayList<Courses>();	
+	List<Courses> allocatedList = new ArrayList<Courses>();	
 	
 	public List<Courses> getAllocatedList() {
 		return allocatedList;
